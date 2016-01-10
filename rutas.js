@@ -27,6 +27,7 @@ angular.module('myApp', ['ngRoute', 'formly','formlyBootstrap'])
             templateUrl: 'views/404.html'
         })
     })
+
     .factory('countryService', function ($http, $rootScope) {
         var country = {};
         country.data = [];
@@ -46,6 +47,7 @@ angular.module('myApp', ['ngRoute', 'formly','formlyBootstrap'])
 
         return country;
     })
+
     .factory('loadAlert', function () {
         var button = {};
         button.greeting = function () {
@@ -53,6 +55,7 @@ angular.module('myApp', ['ngRoute', 'formly','formlyBootstrap'])
         }
         return button;
     })
+
     .directive('sayHi', function () {
         return {
             restrict: 'AE',
@@ -61,73 +64,77 @@ angular.module('myApp', ['ngRoute', 'formly','formlyBootstrap'])
             //templateUrl: 'button/buttonAlert.html'
         }
     })
-.controller('mainController', function ($scope, loadAlert) {//, countryService) {
-    $scope.message = 'Bienvenidos al sitio ';// + countryService.country.name + '!';
-    $scope.greeting = loadAlert.greeting;
-})
 
-.controller('aboutController', function ($scope) {
-    $scope.message = 'SOY EL acerca de !'
-})
-.controller('contactController', function ($scope) {
-    var cr = this;
-    cr.user = {};
-    cr.userDate = [{
-        key: 'fullName',
-        type: 'input',
-        templateOptions: {
-            type: "text",
-            label: 'Nombre Completo',
-            placeholder: 'Escribe tu nombre completo',
-            required: true
-        }
-    }, {
-        key: 'email',
-        type: 'input',
-        templateOptions: {
-            type: "email",
-            label: 'Correo electronico',
-            placeholder: 'Escribe tu correo',
-            required: true
-        }
-    }, {
-        key: 'moreInfo',
-        type: 'checkbox',
-        templateOptions: {
-            label: "¿Deseas recibir más información?"
-        }
-    }
-    ];
-    // $scope.message = 'SOY EL Contacto!'
-})
-.controller('countriesController', function ($scope, $location, countryService) {
-    $scope.message = 'Lista Paises';
-    $scope.loadData = false;
+    .controller('mainController', function ($scope, loadAlert) {//, countryService) {
+        $scope.message = 'Bienvenidos al sitio ';// + countryService.country.name + '!';
+        $scope.greeting = loadAlert.greeting;
+    })
 
-    assignData = function () {
-        $scope.cities = countryService.data;
-        $scope.loadData = true;
-    }
+    .controller('aboutController', function ($scope) {
+        $scope.message = 'SOY EL acerca de !'
+    })
 
-    $scope.$on('loadDataFinish', function () {
+    .controller('contactController', function ($scope) {
+        var cr = this;
+        cr.user = {};
+        cr.userDate = [{
+            key: 'fullName',
+            type: 'input',
+            templateOptions: {
+                type: "text",
+                label: 'Nombre Completo',
+                placeholder: 'Escribe tu nombre completo',
+                required: true
+            }
+        }, {
+            key: 'email',
+            type: 'input',
+            templateOptions: {
+                type: "email",
+                label: 'Correo electronico',
+                placeholder: 'Escribe tu correo',
+                required: true
+            }
+        }, {
+            key: 'moreInfo',
+            type: 'checkbox',
+            templateOptions: {
+                label: "¿Deseas recibir más información?"
+            }
+        }
+        ];
+        // $scope.message = 'SOY EL Contacto!'
+    })
+
+    .controller('countriesController', function ($scope, $location, countryService) {
+        $scope.message = 'Lista Paises';
+        $scope.loadData = false;
+
+        assignData = function () {
+            $scope.cities = countryService.data;
+            $scope.loadData = true;
+        }
+
+        $scope.$on('loadDataFinish', function () {
+            assignData();
+        });
+
         assignData();
-    });
 
-    assignData();
-
-    $scope.city = {};
-    $scope.getCity = function (city) {
-        $scope.city = city;
-    }
+        $scope.city = {};
+        $scope.getCity = function (city) {
+            $scope.city = city;
+        }
 
 
-    $scope.showDetail = function (detail) {
-        countryService.country = detail;
+        $scope.showDetail = function (detail) {
+            countryService.country = detail;
 
-        $location.path('/detail');
+            $location.path('/detail');
 
-    }
-})
-.controller('detailController', function ($scope, countryService) {
-    $scope.city = countryService.country;
-})
+        }
+    })
+
+    .controller('detailController', function ($scope, countryService) {
+        $scope.city = countryService.country;
+    })
