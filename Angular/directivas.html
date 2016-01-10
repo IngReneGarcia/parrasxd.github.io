@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Directivas</title>
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="directivas.js"></script>
+    <style type="text/css">
+        .red {
+            background-color: red;
+        }
+
+        .green {
+            background-color: #9FF781;
+        }
+
+        .blue {
+            background-color: #81BEF7;
+        }
+
+        body {
+            background-color: #9FF781;
+        }
+    </style>
+
+</head>
+<body ng-app="myApp" ng-controller="myControllers" ng-init="x = 0" ng-class="{blue:x>5}">
+    <!--<body ng-app="myApp" ng-controller="myControllers" ng-init="x = 0" ng-class="(x<5)?{green:x<5}:{blue:x>5}">-->
+
+    <div>
+        <form ng-submit="submit()">
+            <input type="text" ng-model="person.name" name="person.name" />
+            <input type="submit" name="person.name" value="Enviar" />
+            <code>people = {{people}}</code>
+
+            <ul>
+                <li ng-repeat=" person in people">
+                    {{person.name}}<!--="(index,person) in people">-->
+                </li>
+            </ul>
+        </form>
+
+        <ul>
+            <li ng-repeat="city in cities.availableOptions">
+                {{city.name}}
+            </li>
+        </ul>
+    </div>
+
+    <hr />
+    <br />
+    <div>
+        <!--<img src="{{myImage}}" />
+        <img ng-src="{{myImage}}" />-->
+    </div>
+    <hr />
+    <br />
+
+    <div>
+        <select ng-model="cities.selectedOption" ng-options="city.name for city in cities.availableOptions track by city.name">
+            <!--<option value="">Elige una Ciudad</option>-->
+            <!--<option value="" ng-selected="true">Otra opcion...</option>-->
+        </select>
+        La ciudad seleccionada es :{{ city.name }}
+
+    </div>
+
+    <hr />
+    <br />
+    <details ng-open='open'>
+        <summary ng-show='open'>Este es el detalle</summary>
+    </details>
+    <input type="text" ng-readonly="open" />
+
+    <input type="text" ng-model="myData" />
+    <input type="text" ng-readonly="myData" value="Dato" />
+    <br />
+    <hr />
+    <div>
+        <input type="checkbox" ng-model="open" />
+        <br />
+        {{open}}
+    </div>
+    <br />
+    <hr />
+    <div>
+        El link es : {{myLink}}
+        <a href="{{myLink}}">MI LINK</a>
+        <a ng-href="{{myLink}}">MI LINK</a>
+    </div>
+    <hr />
+    <div id="content">
+        <button ng-click=" x = generateNumber()">Generar Aleatorio</button>
+        <label>{{x}}</label>
+        <div ng-if="x>5" ng-class="{red: x > 5}">
+            HAZ GANADO!
+        </div>
+    </div>
+</body>
+</html>

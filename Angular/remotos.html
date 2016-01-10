@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Remotos</title>
+
+    <link type="text/css" rel="stylesheet" href="bower_components/foundation/css/foundation.css" />
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="remotos.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myControllers">
+    <!--<ul>
+        <li ng-repeat=" city in cities" ng-model="city">{{city.name}} - {{city.capital}}</li>
+    </ul>-->
+
+    <table>
+        <thead><tr><td>City</td><td>Capital</td></tr></thead>
+        <tbody>
+            <tr ng-repeat="city in cities" ng-model="city" ng-click="getCity(city)">
+                <td>{{city.name}}</td>
+                <td>{{city.capital}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style=" position:fixed; top:0; right:0">
+        <!-- subregion, poblacion, callingCodes, Monedas, TimeZone -->
+        <label> Subregion : {{city.subregion}}</label>
+        <label> Population : {{city.population}}</label>
+        <label> CallingCodes :{{city.callingCodes}}</label>
+        <label> Currencies : {{city.currencies}}</label>
+        <label> TimeZone : {{city.timezones}}</label>
+    </div>
+</body>
+</html>
