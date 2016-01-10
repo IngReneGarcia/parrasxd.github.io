@@ -78,7 +78,7 @@ angular.module('myApp', ['ngRoute', 'formly','formlyBootstrap'])
         var cr = this;
         cr.user = {};
         console.log("hola");
-        cr.userDate = [
+        cr.userData = [
             {
                 key: 'fullName',
                 type: 'input',
