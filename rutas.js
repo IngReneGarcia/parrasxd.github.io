@@ -77,31 +77,34 @@ angular.module('myApp', ['ngRoute', 'formly','formlyBootstrap'])
     .controller('contactController', function ($scope) {
         var cr = this;
         cr.user = {};
-        cr.userDate = [{
-            key: 'fullName',
-            type: 'input',
-            templateOptions: {
-                type: "text",
-                label: 'Nombre Completo',
-                placeholder: 'Escribe tu nombre completo',
-                required: true
+        cr.userDate = [
+            {
+                key: 'fullName',
+                type: 'input',
+                templateOptions: {
+                    type: "text",
+                    label: 'Nombre Completo',
+                    placeholder: 'Escribe tu nombre completo',
+                    required: true
+                }
+            },
+            {
+                key: 'email',
+                type: 'input',
+                templateOptions: {
+                    type: "email",
+                    label: 'Correo electronico',
+                    placeholder: 'Escribe tu correo',
+                    required: true
+                }
+            },
+            {
+                key: 'moreInfo',
+                type: 'checkbox',
+                templateOptions: {
+                    label: "¿Deseas recibir más información?"
+                }
             }
-        }, {
-            key: 'email',
-            type: 'input',
-            templateOptions: {
-                type: "email",
-                label: 'Correo electronico',
-                placeholder: 'Escribe tu correo',
-                required: true
-            }
-        }, {
-            key: 'moreInfo',
-            type: 'checkbox',
-            templateOptions: {
-                label: "¿Deseas recibir más información?"
-            }
-        }
         ];
         // $scope.message = 'SOY EL Contacto!'
     })
