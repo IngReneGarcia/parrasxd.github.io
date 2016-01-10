@@ -1,5 +1,6 @@
 ﻿<div class="jumbotron text-center">
     <h1>Contacto</h1>
-    {{message}}
-    <say-hi></say-hi>
+    <formly-form model="cr.user" fields="cr.userData">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </formly-form>
 </div>

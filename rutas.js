@@ -1,5 +1,5 @@
 // JavaScript source code
-angular.module('myApp', ['ngRoute'])
+angular.module('myApp', ['ngRoute', 'formly'])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
@@ -70,7 +70,19 @@ angular.module('myApp', ['ngRoute'])
     $scope.message = 'SOY EL acerca de !'
 })
 .controller('contactController', function ($scope) {
-    $scope.message = 'SOY EL Contacto!'
+    var cr = this;
+    cr.user = {};
+    cr.userDate = [{
+        key: 'fullName',
+        type: 'input',
+        templateOptions: {
+            type: "text",
+            label: 'Nombre Completo',
+            placeholder: 'Escribe tu nombre completo',
+            required:true
+        }
+    }];
+    // $scope.message = 'SOY EL Contacto!'
 })
 .controller('countriesController', function ($scope, $location, countryService) {
     $scope.message = 'Lista Paises';
