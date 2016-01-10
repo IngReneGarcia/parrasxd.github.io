@@ -77,6 +77,7 @@ angular.module('myApp', ['ngRoute', 'formly','formlyBootstrap'])
     .controller('contactController', function ($scope) {
         var cr = this;
         cr.user = {};
+        console.log("hola");
         cr.userDate = [
             {
                 key: 'fullName',
