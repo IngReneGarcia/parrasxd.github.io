@@ -12,7 +12,7 @@ angular.module('myApp', ['ngRoute', 'formly'])
         })
         .when('/contact', {
             templateUrl: 'views/contact.html',
-            controller: 'contactController'
+            controller: 'contactController as cr'
         })
         .when('/countries', {
             templateUrl: 'views/countries.html',
@@ -79,9 +79,25 @@ angular.module('myApp', ['ngRoute', 'formly'])
             type: "text",
             label: 'Nombre Completo',
             placeholder: 'Escribe tu nombre completo',
-            required:true
+            required: true
         }
-    }];
+    }, {
+        key: 'email',
+        type: 'input',
+        templateOptions: {
+            type: "email",
+            label: 'Correo electronico',
+            placeholder: 'Escribe tu correo',
+            required: true
+        }
+    }, {
+        key: 'moreInfo',
+        type: 'checkbox',
+        templateOptions: {
+            label: "¿Deseas recibir más información?"
+        }
+    }
+    ];
     // $scope.message = 'SOY EL Contacto!'
 })
 .controller('countriesController', function ($scope, $location, countryService) {
