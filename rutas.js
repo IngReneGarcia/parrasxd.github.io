@@ -1,5 +1,5 @@
 // JavaScript source code
-angular.module('myApp', ['ngRoute', 'formly'])
+angular.module('myApp', ['ngRoute', 'formly','formlyBootstrap'])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
